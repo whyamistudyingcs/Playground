@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: playground
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 92660482377-8te99ebjq14qa9tb3kuti4jml3k7bjd0.apps.googleusercontent.com
+            client-secret: ${RESOURCE-SERVER-CLIENT-SECRET}
+            scope: openid, profile, email
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+
+openapi:
+  oAuthFlow:
+    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+
+springdoc:
+  swagger-ui:
+    oauth:
+      clientId: 92660482377-a852n93ualaq49aiun1lijpq4opmt27m.apps.googleusercontent.com
+    oauth2RedirectUrl: http://localhost:8081/swagger-ui/oauth2-redirect.html
+
+server:
+  port: 8081
+
+gateway:
+  settlement:
+    FINIQ_SCB:
+      HK: 1234
+      UK: 5678
+    FINIQ_WLB:
+      CHN: 31415
+
+app:
+  FileExtractor:
+    client:
+      url: http://localhost:5131/api/
+
