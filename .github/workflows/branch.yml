@@ -6,7 +6,7 @@ on:
 
 jobs:
     build:
-        uses: ./.github/workflows/build.yml@ADD_AUTOMATE_SCRIPT
+        uses: ./.github/workflows/build.yml
         with:
             java-version: '17'
             distribution: 'temurin'
