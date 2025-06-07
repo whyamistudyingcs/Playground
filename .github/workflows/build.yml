@@ -1,0 +1,35 @@
+name: Build and test Spring Boot application
+# No release handling in this ci workflow
+# In real world scenarios, you would have to push the artifact to a repository for deployment use
+
+on:
+    workflow_call:
+        inputs:
+            java-version:
+                type: string
+                required: true
+            distribution:
+                type: string
+                description: 'Java distribution to use'
+                required: false
+                default: 'temurin'
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up JDK
+              uses: actions/setup-java@v4
+              with:
+                  java-version: ${{ inputs.java-version }}
+                  distribution: ${{ inputs.distribution }}
+                  cache: maven
+
+            - name: Run tests with Maven
+              run: mvn test
+
+            - name: Build with Maven
+              run: mvn package -DskipTests
