@@ -1,0 +1,20 @@
+name: push on master
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      java-version: '17'
+      distribution: 'temurin'
+
+  deploy:
+    needs: build
+    uses: ./.github/workflows/deploy.yml
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      SERVER_HOST: ${{ secrets.SERVER_HOST }}
+      SERVER_USER: ${{ secrets.SERVER_USER }}
