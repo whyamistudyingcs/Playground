@@ -1,10 +1,11 @@
-APPDIR=/opt/playground
+APPDIR=/home/dameningen/Workspace/Playground
 PGREP=/usr/bin/pgrep
 JAVA=/usr/bin/java
-PLAYGROUNDJARFILE=/playground.jar
+PLAYGROUNDJARFILE=/target/playground-0.0.1-SNAPSHOT.jar
+LOGDIR=/logs
 ZERO=0
 OKMSG=OK
-PLAYGROUNDPORT=8080
+PLAYGROUNDPORT=8081
 
 RED='\033[1;31m'
 GREEN='\033[1;32m'
@@ -16,15 +17,19 @@ start() {
     echo ""		
     echo "Starting playground service..."
 
-    $PGREP -f PLAYGROUND > /dev/null
+    $PGREP -f playground > /dev/null
     VERIFIER=$?
     if [ $ZERO -eq $VERIFIER ]
     then
         echo -e "The service is ${YELLOW}already${NC} running"
     else
-        $JAVA -jar "-Dfile.encoding=UTF-8" $APPDIR$PLAYGROUNDJARFILE q > /dev/null 2>&1 &
+        # $JAVA -jar "-Dfile.encoding=UTF-8" $APPDIR$PLAYGROUNDJARFILE q > /dev/null 2>&1 &
+        TIMESTAMP=$(date +%Y-%m-%d_%H:%M:%S)
+        LOGFILE="$APPDIR$LOGDIR/${TIMESTAMP}_playground.log"
+        mkdir -p $APPDIR$LOGDIR
+        $JAVA -jar "-Dfile.encoding=UTF-8" $APPDIR$PLAYGROUNDJARFILE --server.port=$PLAYGROUNDPORT > $LOGFILE 2>&1 &
         sleep 3
-        $PGREP -f PLAYGROUND > /dev/null
+        $PGREP -f playground > /dev/null
         VERIFIER=$?
         if [ $ZERO -eq $VERIFIER ]
         then
@@ -39,13 +44,13 @@ start() {
 stop() {
     echo ""		
     echo "Stopping playground service..."
-    $PGREP -f PLAYGROUND > /dev/null
+    $PGREP -f playground > /dev/null
     VERIFIER=$?
     if [ $ZERO -eq $VERIFIER ]
     then        
-		kill -9 $($PGREP -f PLAYGROUND)
+		kill -9 $($PGREP -f playground)
 		sleep 3
-		$PGREP -f PLAYGROUND  > /dev/null
+		$PGREP -f playground  > /dev/null
 		VERIFIER=$?
 		if [ $ZERO -eq $VERIFIER ]
 		then
@@ -62,7 +67,6 @@ stop() {
 status() {
     echo ""		
     echo "Checking status of playground service..."
-    img
     $PGREP -f playground > /dev/null
     VERIFIER=$?
     if [ $ZERO -eq $VERIFIER ]
@@ -90,8 +94,8 @@ case "$1" in
         start
         ;;
   *)
-    echo "${RED}Invalid arguments${NC}"
-    echo " Usages: $0 ${BLUE}{ start | stop | status | restart | reload }${NC}"
+    echo -e "${RED}Invalid arguments${NC}"
+    echo -e " Usages: $0 ${BLUE}{ start | stop | status | restart | reload }${NC}"
     exit 1
 esac
 exit 0
