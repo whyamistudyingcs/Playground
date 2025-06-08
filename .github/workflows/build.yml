@@ -44,4 +44,4 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                   name: deploy-script
-                  path: scripts/deploy.sh
+                  path: scripts/playground-service.sh
