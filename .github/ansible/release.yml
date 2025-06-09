@@ -24,6 +24,11 @@
         mode: '0644'
         force: true
     
+    - name: Make script executable
+      file:
+        path: ~/config/playground-service.sh
+        mode: '0755'
+        
     # - name: Restart the application
     #   shell: |
     #     if pgrep -f 'java -jar' > /dev/null; then
