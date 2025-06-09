@@ -18,6 +18,7 @@ start() {
     echo ""		
     echo "Starting playground service..."
 
+
     if $PGREP -f playground > /dev/null;
     then
         echo -e "The service is ${YELLOW}already${NC} running"
@@ -28,7 +29,7 @@ start() {
         mkdir -p $APPDIR$LOGDIR
         $JAVA -jar "-Dfile.encoding=UTF-8" $APPDIR$PLAYGROUNDJARFILE --server.port=$PLAYGROUNDPORT > $LOGFILE 2>&1 &
         sleep 3
-        
+    
         if $PGREP -f playground > /dev/null;
         then
             echo -e "Service was ${GREEN}successfully${NC} started"
@@ -42,7 +43,7 @@ start() {
 stop() {
     echo ""		
     echo "Stopping playground service..."
-    
+
     if $PGREP -f playground > /dev/null;
     then 
         PIDS=$($PGREP -f playground)
@@ -64,8 +65,7 @@ stop() {
 
 status() {
     echo ""		
-    echo "Checking status of playground service..."
-    
+    echo "Checking status of playground service..." 
     if $PGREP -f playground > /dev/null;
     then
         PIDS=$($PGREP -f playground)
