@@ -7,8 +7,8 @@ OKMSG=OK
 PLAYGROUNDPORT=8081
 
 # ansible config
-PLAYGROUNDJARFILE=playground-0.0.1-SNAPSHOT.jar
-APPDIR=/lib
+PLAYGROUNDJARFILE=/playground-0.0.1-SNAPSHOT.jar
+APPDIR=home/ec2-user/lib
 
 RED='\033[1;31m'
 GREEN='\033[1;32m'
