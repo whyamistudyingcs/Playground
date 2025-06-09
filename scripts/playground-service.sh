@@ -1,12 +1,14 @@
 set -e
-APPDIR=/home/dameningen/Workspace/Playground
-PGREP=/usr/bin/pgrep
-JAVA=/usr/bin/java
-PLAYGROUNDJARFILE=/target/playground-0.0.1-SNAPSHOT.jar
-LOGDIR=/logs
-ZERO=0
-OKMSG=OK
-PLAYGROUNDPORT=8081
+# PGREP=/usr/bin/pgrep
+# JAVA=/usr/bin/java
+# LOGDIR=/logs
+# ZERO=0
+# OKMSG=OK
+# PLAYGROUNDPORT=8081
+
+# ansible config
+PLAYGROUNDJARFILE=playground-0.0.1-SNAPSHOT.jar
+APPDIR=/lib
 
 RED='\033[1;31m'
 GREEN='\033[1;32m'

@@ -1,0 +1,44 @@
+- host: all
+  become: false
+  tasks:
+    - name: Ensure lib and config directories exist
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      with_items:
+        - ~/lib
+        - ~/config
+    
+    - name: Copy JAR file to remote server
+      copy:
+        src: target/*.jar
+        dest: ~/lib/
+        mode: '0644'
+
+    - name: Copy configuration files to remote server
+      copy:
+        src: scripts/
+        dest: ~/config/
+        mode: '0644'
+    
+    # - name: Restart the application
+    #   shell: |
+    #     if pgrep -f 'java -jar' > /dev/null; then
+    #       pkill -f 'java -jar'
+    #     fi
+    #     nohup java -jar ~/lib/playground-app.jar --spring.config.location=~/config/application.properties > ~/app.log 2>&1 &
+    #   args:
+    #     executable: /bin/bash
+
+    - name: Restart the application
+      shell: |
+        cd ~/config
+        ./playground-service.sh restart
+      args:
+        executable: /bin/bash
+      register: restart_result
+    
+    - name: Check if the application restarted successfully
+      debug:
+        var: restart_result.stdout_lines
