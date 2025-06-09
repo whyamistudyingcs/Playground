@@ -1,3 +1,4 @@
+set -e
 APPDIR=/home/dameningen/Workspace/Playground
 PGREP=/usr/bin/pgrep
 JAVA=/usr/bin/java
@@ -17,9 +18,7 @@ start() {
     echo ""		
     echo "Starting playground service..."
 
-    $PGREP -f playground > /dev/null
-    VERIFIER=$?
-    if [ $ZERO -eq $VERIFIER ]
+    if $PGREP -f playground > /dev/null;
     then
         echo -e "The service is ${YELLOW}already${NC} running"
     else
@@ -29,9 +28,8 @@ start() {
         mkdir -p $APPDIR$LOGDIR
         $JAVA -jar "-Dfile.encoding=UTF-8" $APPDIR$PLAYGROUNDJARFILE --server.port=$PLAYGROUNDPORT > $LOGFILE 2>&1 &
         sleep 3
-        $PGREP -f playground > /dev/null
-        VERIFIER=$?
-        if [ $ZERO -eq $VERIFIER ]
+        
+        if $PGREP -f playground > /dev/null;
         then
             echo -e "Service was ${GREEN}successfully${NC} started"
         else
@@ -44,15 +42,15 @@ start() {
 stop() {
     echo ""		
     echo "Stopping playground service..."
-    $PGREP -f playground > /dev/null
-    VERIFIER=$?
-    if [ $ZERO -eq $VERIFIER ]
-    then        
-		kill -9 $($PGREP -f playground)
-		sleep 3
-		$PGREP -f playground  > /dev/null
-		VERIFIER=$?
-		if [ $ZERO -eq $VERIFIER ]
+    
+    if $PGREP -f playground > /dev/null;
+    then 
+        PIDS=$($PGREP -f playground)
+        if [ -n "$PIDS" ]; then
+		    kill -9 $PIDS
+		    sleep 3
+        fi
+		if $PGREP -f playground  > /dev/null;
 		then
 			echo -e "${RED}Failed${NC} to stop service"
 		else
@@ -67,11 +65,11 @@ stop() {
 status() {
     echo ""		
     echo "Checking status of playground service..."
-    $PGREP -f playground > /dev/null
-    VERIFIER=$?
-    if [ $ZERO -eq $VERIFIER ]
+    
+    if $PGREP -f playground > /dev/null;
     then
-        echo -e "Service is ${GREEN}running${NC}"        
+        PIDS=$($PGREP -f playground)
+        echo -e "Service is ${GREEN}running${NC} with PID(s): $PIDS"
     else
         echo -e "Service is ${RED}stopped${NC}"
     fi
