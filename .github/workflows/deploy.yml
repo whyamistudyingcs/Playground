@@ -39,8 +39,5 @@ jobs:
         run: sudo apt-get install -y ansible
       
       - name: Run ansible playbook
-        run: ansible-playbook -i "${{ secrets.SERVER_HOST }}," \
-          -u "${{ secrets.SERVER_USER }}" \
-          --private-key ~/.ssh/id_rsa \
-          .github/ansible/release.yml
+        run: ansible-playbook -i "${{ secrets.SERVER_HOST }}," -u "${{ secrets.SERVER_USER }}" --private-key ~/.ssh/id_rsa --ssh-extra-args="-o StrictHostKeyChecking=no" .github/ansible/release.yml
           

@@ -1,10 +1,10 @@
 set -e
-# PGREP=/usr/bin/pgrep
-# JAVA=/usr/bin/java
-# LOGDIR=/logs
-# ZERO=0
-# OKMSG=OK
-# PLAYGROUNDPORT=8081
+PGREP=/usr/bin/pgrep
+JAVA=/usr/bin/java
+LOGDIR=/logs
+ZERO=0
+OKMSG=OK
+PLAYGROUNDPORT=8081
 
 # ansible config
 PLAYGROUNDJARFILE=playground-0.0.1-SNAPSHOT.jar
