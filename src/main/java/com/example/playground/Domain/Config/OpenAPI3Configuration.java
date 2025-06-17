@@ -31,20 +31,5 @@ import io.swagger.v3.oas.annotations.servers.Server;
         )
     )
 )
-//@SecurityScheme(
-//    name = "security_auth",
-//    type = SecuritySchemeType.OAUTH2,
-//    flows = @OAuthFlows(
-//        authorizationCode = @OAuthFlow(
-//            authorizationUrl = "${openapi.oAuthFlow.authorizationUrl}",
-//            tokenUrl = "${openapi.oAuthFlow.tokenUrl}",
-//            scopes = {
-//                @OAuthScope(name = "openid", description = "Associate you with your personal info"),
-//                @OAuthScope(name = "profile", description = "See your personal info, including any personal info you've made publicly available"),
-//                @OAuthScope(name = "email", description = "See your primary Google Account email address")
-//            }
-//        )
-//    )
-//)
 public class OpenAPI3Configuration {
 }

@@ -25,8 +25,15 @@ springdoc:
       clientId: 92660482377-a852n93ualaq49aiun1lijpq4opmt27m.apps.googleusercontent.com
     oauth2RedirectUrl: http://localhost:8081/swagger-ui/oauth2-redirect.html
 
+# self-signed SSL configuration
 server:
   port: 8081
+  ssl:
+    enabled: true
+    key-store: classpath:playground.jks
+    key-store-password: ${KEY_STORE_PASSWORD}
+    key-store-type: JKS
+    key-alias: playground
 
 gateway:
   settlement:
