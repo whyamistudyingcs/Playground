@@ -6,6 +6,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -24,8 +25,12 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/api/health").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll() // temporarily disable the Oauth2
             )
+            .headers(httpSecurityHeadersConfigurer -> {
+                // allow rendering within an iframe for h2-console (https://stackoverflow.com/questions/53395200/h2-console-is-not-showing-in-browser)
+                httpSecurityHeadersConfigurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin);
+            })
             .oauth2ResourceServer(spec -> spec.jwt(Customizer.withDefaults()));
         return http.build();
     }

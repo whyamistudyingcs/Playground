@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
 @OpenAPIDefinition(
-    servers = {@Server(url = "http://localhost:8081")},
+    servers = {@Server(url = "https://localhost:8081")},
     info = @Info(
         title = "Playground service APIs",
         description = "This lists all the playground service api secured by OAuth2",
