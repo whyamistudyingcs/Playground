@@ -1,0 +1,8 @@
+server:
+  port: 8081
+  ssl:
+    enabled: false
+    key-store: classpath:playground.jks
+    key-store-password: dummy-password
+    key-store-type: JKS
+    key-alias: playground

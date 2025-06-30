@@ -1,10 +1,10 @@
-package com.example.playground.bdd;
+package com.example.playground.bdd.steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepDefinition {
+public class SampleStepDef {
     @Given("test cucumber basic setup.")
     public void setUpTest() {
         System.out.println("Cucumber setup is successful!");
