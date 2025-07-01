@@ -17,10 +17,10 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 public class OAuthClientConfiguration {
 
     private final String authorizationGrantType = "client_credentials";
-    
+
     @Bean
     ClientRegistration myClientRegistration(
-            @Value("${spring.security.oauth2.client.provider.my-client.token-uri}") String token_uri,
+            @Value("${spring.security.oauth2.client.provider.google.token-uri}") String token_uri,
             @Value("${spring.security.oauth2.client.registration.google.client-id}") String client_id,
             @Value("${spring.security.oauth2.client.registration.google.client-secret}") String client_secret
     ) {

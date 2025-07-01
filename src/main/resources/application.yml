@@ -9,6 +9,10 @@ spring:
             client-id: 92660482377-8te99ebjq14qa9tb3kuti4jml3k7bjd0.apps.googleusercontent.com
             client-secret: ${RESOURCE-SERVER-CLIENT-SECRET}
             scope: openid, profile, email
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
       resourceserver:
         jwt:
           issuer-uri: https://accounts.google.com

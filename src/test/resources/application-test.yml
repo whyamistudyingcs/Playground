@@ -6,3 +6,17 @@ server:
     key-store-password: dummy-password
     key-store-type: JKS
     key-alias: playground
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 12312312-12312-123123-121233213
+            client-secret: 123123-123-123-123-12312123
+            scope: openid, profile, email
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
