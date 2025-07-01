@@ -1,10 +1,14 @@
 package com.example.playground.bdd.steps;
 
+import com.example.playground.bdd.CucumberSpringConfiguration;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.spring.CucumberContextConfiguration;
 
-public class SampleStepDef {
+@CucumberContextConfiguration
+public class SampleStepDef extends CucumberSpringConfiguration {
     @Given("test cucumber basic setup.")
     public void setUpTest() {
         System.out.println("Cucumber setup is successful!");
