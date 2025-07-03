@@ -19,3 +19,8 @@ mvn test -X
 [DEBUG] Using JVM: /usr/lib/jvm/java-17-openjdk-amd64/bin/java with Java version 17.0
 [DEBUG] Resolved included and excluded patterns: **/Test*.java, **/*Test.java, **/*Tests.java, **/*TestCase.java, !**/*$*
 ```
+To install certificate in trust store
+```
+Ubuntu/Debian,/usr/local/share/ca-certificates/,  sudo update-ca-certificates,   ca-certificates
+Red Hat/CentOS,/etc/pki/ca-trust/source/anchors/, sudo update-ca-trust extract,  ca-certificates
+```
