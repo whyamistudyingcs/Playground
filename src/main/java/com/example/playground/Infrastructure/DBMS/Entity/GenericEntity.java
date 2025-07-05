@@ -1,9 +1,6 @@
 package com.example.playground.Infrastructure.DBMS.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -12,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.util.Date;
 
 @Data
+@MappedSuperclass
 public class GenericEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
