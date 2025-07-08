@@ -1,0 +1,25 @@
+{
+    "funds": [
+        {
+            "name": "Tech Growth Fund",
+            "amount": 5000.0,
+            "type": "Equity",
+            "description": "Invests in high-growth technology companies",
+            "riskLevel": "High"
+        },
+        {
+            "name": "Bond Income Fund",
+            "amount": 3000.0,
+            "type": "Fixed Income",
+            "description": "Focuses on government and corporate bonds",
+            "riskLevel": "Low"
+        },
+        {
+            "name": "Balanced Fund",
+            "amount": 4000.0,
+            "type": "Mixed",
+            "description": "A mix of stocks and bonds for balanced risk and return",
+            "riskLevel": "Medium"
+        }
+    ]
+}
