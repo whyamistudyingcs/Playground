@@ -1,6 +1,6 @@
 package com.example.playground.Interfaces;
 
-import com.example.playground.Infrastructure.Connector.FileExtractorFeignClient;
+import com.example.playground.Infrastructure.Connector.FileExtraction.FileExtractorFeignClient;
 import com.example.playground.Infrastructure.Connector.dto.HealthDto;
 import com.example.playground.Infrastructure.Service.FileExtractionService;
 import feign.Response;

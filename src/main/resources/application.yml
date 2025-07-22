@@ -64,3 +64,6 @@ app:
     client:
       url: http://localhost:5131/api/
 
+test:
+  url: http://localhost:8081/api
+

@@ -1,11 +1,12 @@
 package com.example.playground.Infrastructure.Service;
 
-import com.example.playground.Infrastructure.Connector.FileExtractorFeignClient;
 import feign.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import com.example.playground.Infrastructure.Connector.FileExtraction.FileExtractorFeignClient;
 
 @Service
 @RequiredArgsConstructor
