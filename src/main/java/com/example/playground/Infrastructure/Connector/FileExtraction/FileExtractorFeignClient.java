@@ -1,4 +1,4 @@
-package com.example.playground.Infrastructure.Connector;
+package com.example.playground.Infrastructure.Connector.FileExtraction;
 
 import com.example.playground.Infrastructure.Connector.dto.HealthDto;
 import feign.Param;
