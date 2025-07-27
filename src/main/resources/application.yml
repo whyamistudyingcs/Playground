@@ -76,3 +76,13 @@ app:
 
 test:
   url: http://localhost:8081/api/test
+
+scheduling:
+  jobs:
+    pingJob:
+      google:
+        enabled: true
+        cronExpression: "0/30 * * * * ?"
+      youtube:
+        enabled: true
+        cronExpression: "0/30 * * * * ?"
